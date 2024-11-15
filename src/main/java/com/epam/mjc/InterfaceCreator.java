@@ -1,5 +1,7 @@
 package com.epam.mjc;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
@@ -11,22 +13,45 @@ import java.util.function.Supplier;
 public class InterfaceCreator {
 
     public Predicate<List<String>> isValuesStartWithUpperCase() {
-        throw new UnsupportedOperationException("You should implement this method.");
+        return list -> {
+            for (String e : list) if (!Character.isUpperCase(e.charAt(0))) return false;
+            return true;
+        };
     }
 
     public Consumer<List<Integer>> addEvenValuesAtTheEnd() {
-        throw new UnsupportedOperationException("You should implement this method.");
+       return listNumbers -> {
+            for (Integer number : listNumbers) {
+                if (number % 2 == 0) listNumbers.add(number);
+            }
+        };
     }
 
     public Supplier<List<String>> filterCollection(List<String> values) {
-        throw new UnsupportedOperationException("You should implement this method.");
+        return () -> {
+            List<String> list = new ArrayList<>();
+            for (String e : values) {
+                if (!Character.isUpperCase(e.charAt(0)) && e.endsWith(".") && e.length() >= 3) list.add(e);
+            }
+            return list;
+        };
     }
 
     public Function<List<String>, Map<String, Integer>> stringSize() {
-        throw new UnsupportedOperationException("You should implement this method.");
+        return map -> {
+            Map<String, Integer> stringSize= new LinkedHashMap<>();
+            for (String word : map) {
+                stringSize.put(word, word.length());
+            }
+            return stringSize;
+        };
     }
 
     public BiFunction<List<Integer>, List<Integer>, List<Integer>> concatList() {
-        throw new UnsupportedOperationException("You should implement this method.");
+        return (list1, list2) -> {
+            List<Integer> newList = new ArrayList<>(list1);
+            newList.addAll(list2);
+            return newList;
+        };
     }
 }
