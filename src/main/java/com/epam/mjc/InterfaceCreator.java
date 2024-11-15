@@ -31,7 +31,7 @@ public class InterfaceCreator {
         return () -> {
             List<String> list = new ArrayList<>();
             for (String e : values) {
-                if (!Character.isUpperCase(e.charAt(0)) && e.endsWith(".") && e.length() >= 3) list.add(e);
+                if (Character.isUpperCase(e.charAt(0)) && e.endsWith(".") && e.length() >= 3) list.add(e);
             }
             return list;
         };
@@ -49,7 +49,8 @@ public class InterfaceCreator {
 
     public BiFunction<List<Integer>, List<Integer>, List<Integer>> concatList() {
         return (list1, list2) -> {
-            List<Integer> newList = new ArrayList<>(list1);
+            List<Integer> newList = new ArrayList<>();
+            newList.addAll(list1);
             newList.addAll(list2);
             return newList;
         };
