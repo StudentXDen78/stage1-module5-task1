@@ -17,10 +17,12 @@ public class InterfaceCreator {
     }
 
     public Consumer<List<Integer>> addEvenValuesAtTheEnd() {
-       return listNumbers -> {
+        return listNumbers -> {
+            List<Integer> d = new ArrayList<>();
             for (Integer number : listNumbers) {
-                if (number % 2 == 0) listNumbers.add(number);
+                if (number % 2 == 0) d.add(number);
             }
+            listNumbers.addAll(d);
         };
     }
 
