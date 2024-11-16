@@ -1,9 +1,6 @@
 package com.epam.mjc;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -31,7 +28,7 @@ public class InterfaceCreator {
         return () -> {
             List<String> list = new ArrayList<>();
             for (String e : values) {
-                if (Character.isUpperCase(e.charAt(0)) && e.endsWith(".") && e.length() >= 3) list.add(e);
+                if (Character.isUpperCase(e.charAt(0)) && e.endsWith(".") && Arrays.stream(e.split(" ")).toArray().length > 3) list.add(e);
             }
             return list;
         };
